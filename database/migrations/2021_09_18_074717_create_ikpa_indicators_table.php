@@ -15,6 +15,7 @@ class CreateIkpaIndicatorsTable extends Migration
     {
         Schema::create('ikpa_indicators', function (Blueprint $table) {
             $table->id();
+            $table->string('indicator');
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\MonthlyTaskController;
 use App\Http\Controllers\SopController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DipaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -58,8 +59,8 @@ Route::delete('sops/{sop_id}',[SopController::class,'deleteSop']);
 Route::get('/get_current_month',[DashboardController::class,'getCurrentMonth']);
 
 
-
-
+/////////////////////////////////////////// Dipa Route ////////////////////////////////////////////////
+Route::post('/dipa/upload',[DipaController::class,'uploadPok']);
 
 
 /////////////////////////////////////////// Auth Route ////////////////////////////////////////////////
