@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\IkpaIndicators;
+use DB;
 
 class IkpaIndicatorsSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class IkpaIndicatorsSeeder extends Seeder
     public function run()
     {
         //
+        DB::table('ikpa_indicators')->delete();
      $ikpa_array= [
     [
          "indicator_id" => "1001",
@@ -94,14 +96,14 @@ class IkpaIndicatorsSeeder extends Seeder
                                        "is_complete" => false
                                     ],
                                         [
-                                          "indicator_id" => "3003",
+                                          "indicator_id" => "3005",
                                           "name" => "Pengembalian SPM",
                                           "bobot" => 5,
                                           "tanggal_update" => "2021-10-09",
                                           "is_complete" => false
                                        ],
                                         [
-                                             "indicator_id" => "3004",
+                                             "indicator_id" => "3006",
                                              "name" => "Perencanaan Kas",
                                              "bobot" => 5,
                                              "tanggal_update" => "2021-10-09",
@@ -113,13 +115,13 @@ class IkpaIndicatorsSeeder extends Seeder
         # code...
         $ikpa=$ikpa_array[$i];
 
-        $ikpa_val=$array_values($ikpa);
+        $ikpa_val=array_values($ikpa);
 
-        IkpaIndicators::create([
+        DB::table('ikpa_indicators')->insert([
             "id"=>$ikpa_val[0],
             "name"=>$ikpa_val[1],
             "bobot"=>$ikpa_val[2]
-        ])
+        ]);
     }
 
 
