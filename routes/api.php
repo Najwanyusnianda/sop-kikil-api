@@ -7,6 +7,7 @@ use App\Http\Controllers\SopController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DipaController;
+use App\Http\Controllers\IkpaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,7 +38,11 @@ Route::get('/monthly_progress/task/{task_id}',[MonthlyTaskController::class,'get
 ///UPDATE status laporan tugas bulanan pada bulan xxx
 Route::post('/monthly_progress/task',[MonthlyTaskController::class,'updateMonthlyTaskProgress']);
 
-
+///---------ikpa route-----------
+Route::post('/ikpa/uploads',[IkpaController::class,'uploadIkpaMonth']);
+Route::get('/ikpa/indicator/{indicator_id}',[IkpaController::class,'getIndicatorSeries']);
+Route::get('/ikpa/month/{month_id}',[IkpaController::class,'getMonthlyIndicators']);
+Route::get('/ikpa/month',[IkpaController::class,'getUniqueMonth']);
 
 /////////////////////////////////////////// SOP Route ////////////////////////////////////////////////
 

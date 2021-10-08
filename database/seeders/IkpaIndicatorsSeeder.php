@@ -48,7 +48,7 @@ class IkpaIndicatorsSeeder extends Seeder
                ],
                 [
                      "indicator_id" => "2002",
-                     "name" => "Pengelolaan UP dan TUO",
+                     "name" => "Pengelolaan UP dan TUP",
                      "bobot" => 5,
                      "tanggal_update" => "2021-10-09",
                      "is_complete" => false

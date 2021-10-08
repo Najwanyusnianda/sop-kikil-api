@@ -53,6 +53,12 @@
                             <input type="file" name="dipa_file" id="dipa_file">
                             <input type="submit" name="" id="" value="send request">
                         </form>
+
+                        <form action="/api/ikpa/uploads" method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <input type="file" name="ikpa_file" id="ikpa_file">
+                            <input type="submit" name="" id="" value="send request ikpa">
+                        </form>
                         </div>
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
