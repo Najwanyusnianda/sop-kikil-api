@@ -17,6 +17,7 @@ class CreateSopListsTable extends Migration
             $table->id();
             $table->string('title',200);
             $table->text('file_url');
+            $table->text('type');
            // $table->tinyText('word_tags')->nullable();
            // $table->json('role_tags')->nullable();
             $table->text('description')->nullable();

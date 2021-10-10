@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DipaController;
 use App\Http\Controllers\IkpaController;
+use App\Http\Controllers\DownloadFileController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -53,8 +54,8 @@ Route::get('/sops/{sop_id}',[SopController::class,'getSelectedSopDetail']);
 
 Route::get('/sops?search={keyword}',[SopController::class,'searchSop']);
 
-Route::get('/sops?tags={role_tag}',[SopController::class,'filterRoleSop']);
-
+Route::get('/sops/{role_tag}',[SopController::class,'filterRoleSop']);
+Route::get('/sops/type/{type}',[SopController::class,'filterTypeSop']);
 Route::post('/sops',[SopController::class,'storeSop']);
 Route::post('/sops/update',[SopController::class,'updateSop']);
 Route::delete('sops/{sop_id}',[SopController::class,'deleteSop']);
@@ -77,3 +78,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
+
+
+/////////////////////////////////////////// Download Route ////////////////////////////////////////////////
+Route::get('/download/{url}',[DownloadFileController::class,'download']);

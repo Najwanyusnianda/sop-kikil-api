@@ -74,6 +74,36 @@ class SopController extends Controller
 
     }
 
+    public function filterTypeSop($type){
+
+        $sop_list=SopList::where('type',$type)->get();
+        $sop_pluck= SopList::where('type',$type)->pluck('id');
+       // dd($sop_pluck);
+        $sop_tags=DB::table('sop_tags')->whereIn("sop_id",$sop_pluck)
+        ->join('tags','sop_tags.tag_id','=','tags.id')
+        ->select('sop_tags.sop_id','sop_tags.tag_id','tags.name','tags.description','tags.type')
+        ->get();
+
+        if($sop_list->isEmpty()){
+            return response()->json([
+                "status"=>$this->failed_status,
+                "success"=>false,
+              //  "data"=>$sop_list
+            ],400);
+        }else{
+            return response()->json([
+                "status"=>$this->success_status,
+                "success"=>true,
+                "count"=>count($sop_list),
+                "data"=>[
+                    "sop_list"=>$sop_list,
+                    "tags_list"=>$sop_tags
+                ]
+            ],200);
+        }
+
+    }
+
 
     public function searchSop($keyword){
         $sop_filtered=SopList::where('title','like','%'.$keyword.'%')->get();
@@ -137,6 +167,7 @@ class SopController extends Controller
             $sop=SopList::create([
                 "title"=>$request->title,
                 "file_url"=>$fullpath,
+                "type"=>$request->type,
                // "word_tag"=>$request->world_tags ?? '',
                 //"role_tag"=>$request->role_tags,
                 "description"=>$request->description,
